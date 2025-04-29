@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-5 col-sm-6">
+            <a href="{% url 'post-list' %}" class="btn btn-outline-primary my-2 my-sm-0">Back To Feed</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <div>
+                <a href="{% url 'profile' post.author.profile.pk %}">
+                    <img class="rounded-circle post-img" height="30" width="30" src="{{ post.author.profile.picture.url }}" />
+                </a>
+                <p class="post-text">
+                    <a class="text-primary post-link" href="{% url 'profile' post.author.profile.pk %}">@{{ post.author }}</a> {{ post.created_on }}
+                </p>
+            </div>
+            {% if request.user == post.author %}
+                <a href="{% url 'post-edit' post.pk %}" class="edit-color"><i class="far fa-edit"></i></a>
+                <a href="{% url 'post-delete' post.pk %}" class="edit-color"><i class="fas fa-trash"></i></a>
+            {% endif %}
+
+            <div class="shared-post position-relative pt-3">
+            {% if post.image.count > 0 or post.video.count > 0 %}
+                <div id="carouselExampleIndicators" class="carousel slide">
+                    <div class="carousel-indicators">
+                        {% for img in post.image.all %}
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter }}"></button>
+                        {% endfor %}
+                        {% for video in post.video.all %}
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0|add:post.image.count }}" {% if post.image.count == 0 and forloop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ forloop.counter|add:post.image.count }}"></button>
+                        {% endfor %}
+                    </div>
+                    <div class="carousel-inner">
+                        {% for img in post.image.all %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <img src="{{ img.image.url }}" class="d-block w-100 post-media" alt="...">
+                            </div>
+                        {% endfor %}
+                        {% for video in post.video.all %}
+                            <div class="carousel-item {% if post.image.count == 0 and forloop.first %}active{% endif %}">
+                                <video controls class="d-block w-100 post-media">
+                                    <source src="{{ video.video.url }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            {% endif %}
+    
+            <div class="body">
+                <p>{{ post.body }}</p>
+            </div>
+
+            </div>
+            <div class="d-flex flex-row">
+                <form method="POST" action="{% url 'like' post.pk %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <button class="remove-default-btn" type="submit">
+                        <i class="far fa-thumbs-up"> <span>{{ post.likes.all.count }}</span></i>
+                    </button>
+                </form>
+
+                <form method="POST" action="{% url 'dislike' post.pk %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <button class="remove-default-btn" type="submit">
+                        <i class="far fa-thumbs-down"> <span>{{ post.dislikes.all.count }}</span></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-3 mb-5">
+        <div class="col-md-5 col-sm-12">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button class="btn btn-outline-success btn-sm" style="background-color: #feffff; border-color: #4094a1;">Submit!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% for comment in comments %}
+        {% if comment.is_parent %}
+            <div class="row justify-content-center mt-3 mb-5">
+                <div class="col-md-5 col-sm-12 border-bottom">
+                    <div>
+                        <a href="{% url 'profile' comment.author.profile.pk %}">
+                            <img class="rounded-circle post-img" height="30" width="30" src="{{ comment.author.profile.picture.url }}" />
+                        </a>
+                        <p class="post-text">
+                            <a class="text-success post-link" href="{% url 'profile' comment.author.profile.pk %}">@{{ comment.author }}</a> {{ comment.created_on }}
+                        </p>
+                    </div>
+                    {% if request.user == comment.author %}
+                        <a href="{% url 'comment-delete' post.pk comment.pk %}" class="edit-color"><i class="fas fa-trash"></i></a>
+                    {% endif %}
+                    <p>{{ comment.comment }}</p>
+
+                    <div class="d-flex flex-row">
+                        <form method="POST" action="{% url 'comment-like' post.pk comment.pk %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.path }}">
+                            <button class="remove-default-btn" type="submit">
+                                <i class="far fa-thumbs-up"> <span>{{ comment.likes.all.count }}</span></i>
+                            </button>
+                        </form>
+
+                        <form method="POST" action="{% url 'comment-dislike' post.pk comment.pk %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.path }}">
+                            <button class="remove-default-btn" type="submit">
+                                <i class="far fa-thumbs-down"> <span>{{ comment.dislikes.all.count }}</span></i>
+                            </button>
+                        </form>
+                        <div>
+                            <button class="remove-default-btn" onclick="commentReplyToggle('{{ comment.pk }}')"><i class="far fa-comment-dots"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mt-3 mb-5 d-none" id="{{ comment.pk }}">
+                <div class="col-md-5 col-sm-12">
+                    <form method="POST" action="{% url 'comment-reply' post.pk comment.pk %}">
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary">Submit!</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            {% for child_comment in comment.children %}
+                <div class="row justify-content-center mt-3 mb-5 child-comment">
+                    <div class="col-md-5 col-sm-12 border-bottom">
+                        <div>
+                            <a href="{% url 'profile' child_comment.author.profile.pk %}">
+                                <img class="rounded-circle post-img" height="30" width="30" src="{{ child_comment.author.profile.picture.url }}" />
+                            </a>
+                            <p class="post-text">
+                                <a class="text-primary post-link" href="{% url 'profile' child_comment.author.profile.pk %}">@{{ child_comment.author }}</a> {{ child_comment.created_on }}
+                            </p>
+                        </div>
+                        {% if request.user == child_comment.author %}
+                            <a href="{% url 'comment-delete' post.pk child_comment.pk %}" class="edit-color"><i class="fas fa-trash"></i></a>
+                        {% endif %}
+                        <p>{{ child_comment.comment }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+</div>
+
+<script>
+    document.querySelectorAll('.carousel-control-prev, .carousel-control-next').forEach(function(element) {
+        element.addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+{% endblock content %}

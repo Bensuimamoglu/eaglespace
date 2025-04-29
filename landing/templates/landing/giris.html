@@ -1,0 +1,35 @@
+{% load static %}
+
+{% block css_file %}
+<link rel="stylesheet" href="{% static 'landing/css/giris.css' %}">
+<html>
+<body>
+
+    <h1 class = 'text_fade '>EAGLESPACE</h1>
+     <h3 class = 'text_fade link-spacing' >
+       <a href="{% url 'login' %}">Login    </a>
+       <a href="{% url 'register' %}">    Register</a>
+     </h3>
+    <div></div>
+    <div></div>
+    <div></div>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{%  static 'landing/css/giris.css' %}">
+    <style>
+    .link-spacing a {
+          margin-right: 20px; /* İstediğiniz mesafe */
+      }
+      
+      .link-spacing a:last-child {
+          margin-right: 10; /* Son bağlantıda sağ boşluk olmasın */
+      }
+
+
+    </style>
+    </head>
+
+    </body>
+
+    </html>
+    {% endblock %}
