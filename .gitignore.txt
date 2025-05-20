@@ -33,6 +33,3 @@ ENV/
 
 # Migrations (opsiyonel)
 **/migrations/
-
-db.sqlite3
-
