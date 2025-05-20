@@ -5,7 +5,7 @@ appdirs==1.4.4
 astunparse==1.6.3
 
 atomicwrites==1.4.0
-
+Django==5.0.2
 flatbuffers==24.3.25
 
 gast==0.6.0
@@ -43,7 +43,7 @@ PyQt5==5.15.10
 PyQtWebEngine==5.15.6
 
 RapidFuzz==3.11.0
-
+requests==2.31.0
 scikit-surprise==1.1.4
 
 setuptools==69.5.1
