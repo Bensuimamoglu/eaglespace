@@ -1,0 +1,216 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.post-img {
+    border-radius: 50%;
+    object-fit: cover;
+    float: left;
+    margin-right: 8px;
+    margin-top: 6px;
+}
+
+.post-media {
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.shared-post {
+    background-color: #CFE2F3;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 0;
+}
+
+.body p {
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: transparent;
+}
+
+.btn-link {
+    color: #27619f;
+}
+
+.btn-link:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.remove-default-btn {
+    background: none;
+    border: none;
+    padding: 8px;
+    color: #007bff;
+}
+
+.rounded-circle {
+    border-radius: 50%;
+}
+
+.remove-default-btn:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.share-btn {
+    cursor: pointer;
+    color: #007bff;
+}
+
+.share-btn:hover {
+    color: #0056b3;
+}
+
+.d-grid {
+    display: grid;
+    gap: 10px;
+}
+
+.edit-color {
+    color: #333;
+}
+
+.post-link {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.post-text {
+    padding-top: 0.5rem;
+}
+
+.child-comment {
+    margin-left: 2rem;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #f1f1f1;
+    min-width: 350px;
+    box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    font-size: 0.9rem;
+}
+
+.dropdown-content a {
+    color: #000;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown-item-parent {
+    position: relative;
+    display: block;
+}
+
+.dropdown-item-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.8rem;
+    padding-right: 5px;
+    transition: 0.3s
+}
+
+.dropdown-item-close:hover {
+    color: rgb(180, 25, 25);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.inbox-icon-container {
+    margin-right: 15px;
+}
+
+.inbox-icon {
+    color: #333;
+    transition: 0.5s;
+}
+
+.inbox-icon:hover {
+    transition: 0.5s;
+}
+
+.empty-text {
+    color: #777;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.inbox-icon {
+    margin-right: 5px;
+}
+
+.cover-photo {
+    padding-top: 10px;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.profile-picture {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid white;
+    object-fit: contain;
+    background-color: #b1d3f7;
+}
+
+.notification-icon {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.notification-icon .fa-bell {
+    padding-top: 10px;
+    font-size: 16px;
+    color: #736e7e; 
+}
+
+.notification-badge {
+    position: absolute;
+    top: 2px; 
+    right: -6px; 
+    padding: 4px 6px; 
+    border-radius: 100%;
+    background-color: #007bff; 
+    color: white;
+    font-size: 10px;
+    transition: 0.3s;
+}
+
+.notification-badge:hover {
+    opacity: 0.8; 
+}
+
+.favicon {
+    width: 50px;
+    height: 50px;
+    margin-right: 4px; 
+    margin-bottom: 8px;
+    vertical-align: middle; 
+}
