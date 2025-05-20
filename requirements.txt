@@ -2,15 +2,22 @@ absl-py==2.1.0
 
 appdirs==1.4.4
 
-astunparse==1.6.3
+asgiref==3.8.1
 
+astunparse==1.6.3
 atomicwrites==1.4.0
-Django==5.0.2
+
+Django==5.2.1
+django-allauth==65.8.0
+django-crispy-forms==2.4
+
 flatbuffers==24.3.25
+fqdn==1.5.1
 
 gast==0.6.0
 
 google-pasta==0.2.0
+
 grpcio==1.68.1
 gunicorn==23.0.0
 
@@ -40,13 +47,16 @@ PyHyphen==4.0.4
 pyls-spyder==0.4.0
 
 PyQt5==5.15.10
-PyQtWebEngine==5.15.6
 
-RapidFuzz==3.11.0
+PyQtWebEngine==5.15.6
 requests==2.31.0
+RapidFuzz==3.11.0
+
 scikit-surprise==1.1.4
 
 setuptools==69.5.1
+
+sqlparse==0.5.3
 
 surprise==0.1
 
