@@ -93,22 +93,23 @@ WSGI_APPLICATION = 'socialnetwork.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-#DATABASES = {
-#   'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'eaglespace_db',
-#        'USER': 'postgres',
-#        'PASSWORD': 'ELeuFiVybBR7jn2161S68fIAnEmLWLsM',
-#        'HOST': 'localhost',
-#        'PORT': '5432',
-#        
-#    }
-#}
-import dj_database_url
-
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+   'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'eaglespace_postgresql_name_5rl6',
+        'USER': 'eaglespace_postgresql_name_5rl6_user',
+        'PASSWORD': '62HYz2lYbp8Fh7iLNKauPDKF4vzanmuA',
+        'HOST': 'dpg-d0n4egali9vc7382s800-a',
+        'PORT': '5432',
+        
+    }
 }
+
+#import dj_database_url
+
+#DATABASES = {
+#    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
