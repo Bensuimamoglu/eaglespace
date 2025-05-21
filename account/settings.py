@@ -99,7 +99,7 @@ DATABASES = {
         'NAME': 'eaglespace_postgresql_name_5rl6',
         'USER': 'eaglespace_postgresql_name_5rl6_user',
         'PASSWORD': '62HYz2lYbp8Fh7iLNKauPDKF4vzanmuA',
-        'HOST': 'dpg-d0n4egali9vc7382s800-a.oregon-postgres.render.com',
+        'HOST': 'dpg-d0n4egali9vc7382s800-a',
         'PORT': '5432',
         
     }
