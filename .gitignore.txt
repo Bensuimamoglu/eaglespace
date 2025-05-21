@@ -21,6 +21,7 @@ env/
 ENV/
 .eaglespace/
 *.env
+.env
 
 # macOS
 .DS_Store
