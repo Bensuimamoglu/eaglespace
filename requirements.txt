@@ -5,8 +5,8 @@ appdirs==1.4.4
 asgiref==3.8.1
 
 astunparse==1.6.3
-
 atomicwrites==1.4.0
+
 crispy-bootstrap4==2024.10
 
 dj-database-url==2.3.0
@@ -22,10 +22,13 @@ gast==0.6.0
 google-pasta==0.2.0
 grpcio==1.68.1
 gunicorn==23.0.0
+
 isoduration==20.11.0
 
 jsonpointer==2.1
+
 jupyter==1.1.1
+
 keras==3.7.0
 
 libclang==18.1.1
@@ -36,6 +39,7 @@ namex==0.0.8
 
 opt_einsum==3.4.0
 optree==0.13.1
+pillow==10.3.0
 
 protobuf==3.20.3
 psycopg2-binary==2.9.10
@@ -49,12 +53,11 @@ PyQt5==5.15.10
 PyQtWebEngine==5.15.6
 python-decouple==3.8
 
-
 RapidFuzz==3.11.0
-
 scikit-surprise==1.1.4
 
 setuptools==69.5.1
+
 sqlparse==0.5.3
 
 surprise==0.1
@@ -73,4 +76,3 @@ webcolors==24.11.1
 
 wheel==0.43.0
 whitenoise==6.9.0
-
