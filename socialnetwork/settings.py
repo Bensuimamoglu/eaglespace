@@ -8,13 +8,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 's_8&hc^&p-k$ac(zwv#6c8n#hzg#)9d548wg)tcrg#16)deca!'
+#SECRET_KEY = 's_8&hc^&p-k$ac(zwv#6c8n#hzg#)9d548wg)tcrg#16)deca!'
+
+from decouple import config
+
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
 
-ALLOWED_HOSTS = ['.onrender.com'] # Add your domain
-
+ALLOWED_HOSTS = ['eaglespace-w072.onrender.com'] # Add your domain
 
 # Application definition
 
@@ -33,6 +37,7 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'crispy_bootstrap4',
+    
 
     'allauth',
     # 'csp',
@@ -89,12 +94,22 @@ WSGI_APPLICATION = 'socialnetwork.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+   'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'eaglespace_postgresql_name_5rl6',
+        'USER': 'eaglespace_postgresql_name_5rl6_user',
+        'PASSWORD': '62HYz2lYbp8Fh7iLNKauPDKF4vzanmuA',
+        'HOST': 'dpg-d0n4egali9vc7382s800-a',
+        'PORT': '5432',
+        
     }
 }
 
+#import dj_database_url
+
+#DATABASES = {
+#    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -136,6 +151,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
@@ -151,6 +167,8 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
+
+CSRF_TRUSTED_ORIGINS = ['https://eaglespace-w072.onrender.com']
 
 # X_FRAME_OPTIONS = 'DENY'
 # SECURE_HSTS_SECONDS = 3600
