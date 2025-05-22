@@ -7,13 +7,11 @@ asgiref==3.8.1
 astunparse==1.6.3
 atomicwrites==1.4.0
 
-cloudinary==1.44.0
 crispy-bootstrap4==2024.10
 
 dj-database-url==2.3.0
 Django==5.2.1
 django-allauth==65.8.0
-django-cloudinary-storage==0.3.0
 django-crispy-forms==2.4
 
 flatbuffers==24.3.25
