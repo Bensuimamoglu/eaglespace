@@ -52,6 +52,8 @@ pyls-spyder==0.4.0
 PyQt5==5.15.10
 PyQtWebEngine==5.15.6
 python-decouple==3.8
+python-dotenv==0.21.0
+
 
 RapidFuzz==3.11.0
 scikit-surprise==1.1.4
