@@ -33,6 +33,12 @@ ALLOWED_HOSTS = ['eaglespace-w072.onrender.com'] # Add your domain
 #     'allauth.account.auth_backends.AuthenticationBackend',
 # ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+
 INSTALLED_APPS = [
     'social',
     'landing',
